@@ -59,7 +59,7 @@ export default function Home() {
 
   const radius = (
     <div className="row w-100 red-gradient m-0 extra-rounded text-white">
-      <div className="col-6 px-5">
+      <div className="col-md col-12-6 px-5">
         <div className="p-5">
           <div className="my-3">
             <div className="display-4 fw-bold">Meet</div>
@@ -77,10 +77,10 @@ export default function Home() {
           style={{ width: "70%", height: "auto" }}
         />
       </div>
-      <div className="col-6 p-5">
+      <div className="col-12 col-md-6 p-md-5">
         {radiusContent.map(item => (
           <div className="row w-100 extra-rounded my-5" key={item.title}>
-            <div className="col-4 ps-5 pe-4 d-flex justify-content-center align-items-center">
+            <div className="col-4 ps-md-5 pe-md-4 d-flex justify-content-center align-items-center">
               <img src={item.image.src} alt={item.title} width="100%" />
             </div>
             <div className="col-8 d-flex justify-content-center align-items-center">
@@ -100,7 +100,7 @@ export default function Home() {
             <Image src={appStoreImage} alt="Available on App Store" style={{ width: "100%", height: "auto" }} />
           </div>
         </div>
-        <div className="row align-items-center justify-content-center mt-4">
+        <div className="row align-items-center justify-content-center mt-4 mb-4">
           <div className="col-8">
             <input type="text" className="w-100 rounded text-center h-100 p-1" placeholder="enter your email address" />
           </div>
@@ -142,7 +142,7 @@ export default function Home() {
 
   const vidquest = (
     <div className="row w-100 blue-gradient m-0 extra-rounded text-white">
-      <div className="col-6 px-5">
+      <div className="col-12 col-md-6 px-5">
         <div className="p-5">
           <div className="my-3">
             <div className="display-4 fw-bold">Meet</div>
@@ -156,14 +156,14 @@ export default function Home() {
         <Image
           src={vidquestImage}
           alt="Radius App"
-          className="mx-5"
+          className="mx-md-5"
           style={{ width: "90%", height: "auto" }}
         />
       </div>
-      <div className="col-6 p-5">
+      <div className="col-12 col-md-6 p-md-5">
         {vidquestContent.map(item => (
           <div className="row w-100 extra-rounded my-5" key={item.title}>
-            <div className="col-4 ps-5 pe-4 d-flex justify-content-center align-items-center">
+            <div className="col-4 ps-md-5 pe-md-4 d-flex justify-content-center align-items-center">
               <img src={item.image.src} alt={item.title} width="100%" />
             </div>
             <div className="col-8 d-flex justify-content-center align-items-center">
@@ -215,7 +215,7 @@ export default function Home() {
               <img
                 src={logo.src}
                 width="auto"
-                height="30"
+                height={30}
                 alt="Optigon Ventures"
               />
             </a>
@@ -245,8 +245,8 @@ export default function Home() {
               We are
               <img
                 src={logo.src}
-                className="ms-4"
-                height="100%"
+                className="ms-md-4 mt-3 mt-md-0"
+                height={60}
                 width="auto"
                 alt="Optigon Ventures"
               />
@@ -288,8 +288,8 @@ export default function Home() {
         <footer className="bg-black mt-5 py-5 text-light">
           <div className="container d-flex justify-content-between align-items-center">
             <div>
-              <Image src={logoWhite} alt="Optigon Ventures" height={50} />
-              <div className="mt-4">
+              <Image src={logoWhite} alt="Optigon Ventures" height={30} />
+              <div className="mt-4 small">
                 <div>Optigon Ventures Private Limited,</div>
                 <div>32 (1072), Munusamy Salai,</div>
                 <div>West K K Nagar,</div>
