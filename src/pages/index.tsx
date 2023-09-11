@@ -18,11 +18,14 @@ import vidquestImage4 from "@/assets/images/vidquest-4.webp"
 import vidquestImage5 from "@/assets/images/vidquest-5.webp"
 import appStoreImage from "@/assets/images/app_store.webp"
 import googlePlayImage from "@/assets/images/play_store.webp"
+import { Rotate as Hamburger } from 'hamburger-react'
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [tab, setTab] = useState<number>(0);
+
+  const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
 
   const radiusContent = [
     {
@@ -219,7 +222,7 @@ export default function Home() {
                 alt="Optigon Ventures"
               />
             </a>
-            <div className="d-flex align-items-center">
+            <div className="d-md-flex align-items-center d-none">
               <div
                 className="mx-3 fw-bold btn border-0"
                 onClick={() => setTab(0)}
@@ -235,6 +238,9 @@ export default function Home() {
               <div className="button bg-dark text-white px-3 py-2 rounded ms-3 fw-bold btn ">
                 Talk to us
               </div>
+            </div>
+            <div className="d-block d-md-none">
+              <Hamburger size={20} toggled={isNavOpen} toggle={setIsNavOpen} />
             </div>
           </nav>
           <div className="my-5 py-5">
