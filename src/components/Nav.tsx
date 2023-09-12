@@ -18,9 +18,16 @@ export default function Nav() {
           style={{ height: isNavOpen ? "auto" : 0 }}
         >
           <div style={{ paddingTop: navRef.current?.offsetHeight }}></div>
-          <div className="px-4 pt-2 pb-4" style={{ display: isNavOpen ? "block" : "none" }}>
-            <Link href="#consumers"><div className="my-2 text-white">For Consumers</div></Link>
-            <Link href="#enterprises"><div className="my-2 text-white">For Enterprises</div></Link>
+          <div
+            className="px-4 pt-2 pb-4"
+            style={{ display: isNavOpen ? "block" : "none" }}
+          >
+            <Link href="#consumers">
+              <div className="my-2 text-white">For Consumers</div>
+            </Link>
+            <Link href="#enterprises">
+              <div className="my-2 text-white">For Enterprises</div>
+            </Link>
             <div className="btn btn-outline-light w-100 my-2 text-white">
               Talk to us
             </div>
@@ -39,7 +46,7 @@ export default function Nav() {
                 width="auto"
                 height={30}
                 alt="Optigon Ventures"
-                className="navbar-brand ms-2" 
+                className="navbar-brand ms-2"
                 style={{ position: "relative", zIndex: 2 }}
               />
             </Link>
@@ -64,8 +71,12 @@ export default function Nav() {
           />
         </Link>
         <div className="d-md-flex align-items-center d-none">
-          <Link href="#consumers"><div className="mx-3 fw-bold btn border-0">For Consumers</div></Link>
-          <Link href="#enterprises"><div className="mx-3 fw-bold btn border-0">For Enterprises</div></Link>
+          <Link href="#consumers">
+            <div className="mx-3 fw-bold btn border-0">For Consumers</div>
+          </Link>
+          <Link href="#enterprises">
+            <div className="mx-3 fw-bold btn border-0">For Enterprises</div>
+          </Link>
           <div className="px-3 py-2 rounded ms-3 fw-bold btn btn-dark">
             Talk to us
           </div>

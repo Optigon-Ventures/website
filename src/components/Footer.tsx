@@ -1,6 +1,6 @@
-import Image from "next/image"
-import logoWhite from "@/assets/images/logo-white.webp"
-import Link from "next/link"
+import Image from "next/image";
+import logoWhite from "@/assets/images/logo-white.webp";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -17,11 +17,27 @@ export default function Footer() {
         </div>
         <div className="text-end">
           <div className="fw-bold mb-3">Quick Links</div>
-          <div className="my-2"><Link className="text-white" href="/terms-and-conditions">Terms and Conditions</Link></div>
-          <div className="my-2"><Link className="text-white" href="/privacy-policy">Privacy Policy</Link></div>
-          <div className="my-2"><Link className="text-white" href="mailto:hello@optigon.in" target="_blank">Contact Us</Link></div>
+          <div className="my-2">
+            <Link className="text-white" href="/terms-and-conditions">
+              Terms and Conditions
+            </Link>
+          </div>
+          <div className="my-2">
+            <Link className="text-white" href="/privacy-policy">
+              Privacy Policy
+            </Link>
+          </div>
+          <div className="my-2">
+            <Link
+              className="text-white"
+              href="mailto:hello@optigon.in"
+              target="_blank"
+            >
+              Contact Us
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }
