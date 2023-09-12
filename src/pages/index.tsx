@@ -19,6 +19,7 @@ import vidquestImage5 from "@/assets/images/vidquest-5.webp"
 import appStoreImage from "@/assets/images/app_store.webp"
 import googlePlayImage from "@/assets/images/play_store.webp"
 import { Rotate as Hamburger } from 'hamburger-react'
+import Layout from "@/components/Layout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -80,15 +81,15 @@ export default function Home() {
           style={{ width: "70%", height: "auto" }}
         />
       </div>
-      <div className="col-12 col-md-6 p-md-5">
+      <div className="col-12 col-md-6 p-5">
         {radiusContent.map(item => (
           <div className="row w-100 extra-rounded my-5" key={item.title}>
-            <div className="col-4 ps-md-5 pe-md-4 d-flex justify-content-center align-items-center">
-              <img src={item.image.src} alt={item.title} width="100%" />
+            <div className="col-12 col-md-4 d-flex justify-content-center align-items-center pb-3 pb-md-0">
+              <img src={item.image.src} alt={item.title} className="w-50 w-md-100" />
             </div>
-            <div className="col-8 d-flex justify-content-center align-items-center">
-              <div>
-                <div className="fw-bold">{item.title}</div>
+            <div className="col-12 col-md-8 d-flex justify-content-center align-items-center">
+              <div className="text-center text-md-start">
+                <div className="fw-bold mb-2">{item.title}</div>
                 <div>{item.description}</div>
               </div>
             </div>
@@ -103,7 +104,7 @@ export default function Home() {
             <Image src={appStoreImage} alt="Available on App Store" style={{ width: "100%", height: "auto" }} />
           </div>
         </div>
-        <div className="row align-items-center justify-content-center mt-4 mb-4">
+        <div className="row align-items-center justify-content-center mt-4">
           <div className="col-8">
             <input type="text" className="w-100 rounded text-center h-100 p-1" placeholder="enter your email address" />
           </div>
@@ -163,15 +164,15 @@ export default function Home() {
           style={{ width: "90%", height: "auto" }}
         />
       </div>
-      <div className="col-12 col-md-6 p-md-5">
+      <div className="col-12 col-md-6 px-5">
         {vidquestContent.map(item => (
           <div className="row w-100 extra-rounded my-5" key={item.title}>
-            <div className="col-4 ps-md-5 pe-md-4 d-flex justify-content-center align-items-center">
-              <img src={item.image.src} alt={item.title} width="100%" />
+            <div className="col-12 col-md-4 d-flex justify-content-center align-items-center pb-3 pb-md-0">
+              <img src={item.image.src} alt={item.title} className="w-50 w-md-100" />
             </div>
-            <div className="col-8 d-flex justify-content-center align-items-center">
-              <div>
-                <div className="fw-bold">{item.title}</div>
+            <div className="col-12 col-md-8 d-flex justify-content-center align-items-center">
+              <div className="text-center text-md-start">
+                <div className="fw-bold mb-2">{item.title}</div>
                 <div>{item.description}</div>
               </div>
             </div>
@@ -211,38 +212,8 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Optigon Ventures" />
       </Head>
-      <main>
+      <Layout>
         <div className="container">
-          <nav className="navbar navbar-expand-lg navbar-light justify-content-between align-items-center my-2">
-            <a className="navbar-brand" href="">
-              <img
-                src={logo.src}
-                width="auto"
-                height={30}
-                alt="Optigon Ventures"
-              />
-            </a>
-            <div className="d-md-flex align-items-center d-none">
-              <div
-                className="mx-3 fw-bold btn border-0"
-                onClick={() => setTab(0)}
-              >
-                For Consumers
-              </div>
-              <div
-                className="mx-3 fw-bold btn border-0"
-                onClick={() => setTab(1)}
-              >
-                For Enterprises
-              </div>
-              <div className="button bg-dark text-white px-3 py-2 rounded ms-3 fw-bold btn ">
-                Talk to us
-              </div>
-            </div>
-            <div className="d-block d-md-none">
-              <Hamburger size={20} toggled={isNavOpen} toggle={setIsNavOpen} />
-            </div>
-          </nav>
           <div className="my-5 py-5">
             <div className="display-5 text-center fw-bold">
               Hello <span style={{ fontFamily: "Emoji !important" }}>👋</span>
@@ -291,26 +262,7 @@ export default function Home() {
           </div>
         </div>
         <div>{tab === 0 ? radius : vidquest}</div>
-        <footer className="bg-black mt-5 py-5 text-light">
-          <div className="container d-flex justify-content-between align-items-center">
-            <div>
-              <Image src={logoWhite} alt="Optigon Ventures" height={30} />
-              <div className="mt-4 small">
-                <div>Optigon Ventures Private Limited,</div>
-                <div>32 (1072), Munusamy Salai,</div>
-                <div>West K K Nagar,</div>
-                <div>Chennai - 600078</div>
-              </div>
-            </div>
-            <div className="text-end">
-              <div className="fw-bold mb-3">Quick Links</div>
-              <div className="my-2">Terms and Conditions</div>
-              <div className="my-2">Privacy Policy</div>
-              <div className="my-2">Contact Us</div>
-            </div>
-          </div>
-        </footer>
-      </main>
+      </Layout>
     </>
   );
 }
