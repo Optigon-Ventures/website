@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import logo from "@/assets/images/logo.webp";
@@ -18,39 +18,47 @@ import vidquestImage4 from "@/assets/images/vidquest-4.webp"
 import vidquestImage5 from "@/assets/images/vidquest-5.webp"
 import appStoreImage from "@/assets/images/app_store.webp"
 import googlePlayImage from "@/assets/images/play_store.webp"
-import { Rotate as Hamburger } from 'hamburger-react'
 import Layout from "@/components/Layout";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [tab, setTab] = useState<number>(0);
+  const [tab, setTab] = useState<string>("consumers");
 
-  const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
+  useEffect(() => {
+    if (window) {
+      if (window.location.hash === "#enterprises") {
+        setTab("enterprises")
+      } else if (window.location.hash === "#consumers") {
+        setTab("consumers")
+      }
+    }
+  })
 
   const radiusContent = [
     {
       title: "Create beacons",
       description:
-        "Create beacons on your location when you play, show the city - you are playing",
+        "Light up your gaming location, show the world where you're playing and make lifelong friends",
       image: radiusImage1
     },
     {
       title: "Show-off your skill level",
       description:
-        "Whether you are a beginner, a pro turned casual or a competitive gamer - the right people will find you",
+        "Every gamer has a skill level from newbie to pro. Flaunt yours and connect with your tribe.",
       image: radiusImage2
     },
     {
       title: "Supercharge the gaming revolution",
       description:
-        "Rent out your consoles, games and gear through a trusted middle-man system. You get paid while allowing someone to jump into the rabbit hole.",
+        "Rent out your consoles and games through us. You get paid while fuelling someone’s passion.",
       image: radiusImage3
     },
     {
       title: "Build the local community",
       description:
-        "We have hid behind Reddit and Discord usernames for long enough. Bring out the real you, be bold.",
+        "We have hid behind Reddit and Discord usernames for long enough. Be bold, bring out the real you.",
       image: radiusImage4
     },
     {
@@ -63,13 +71,13 @@ export default function Home() {
 
   const radius = (
     <div className="row w-100 red-gradient m-0 extra-rounded text-white">
-      <div className="col-md col-12-6 px-5">
-        <div className="p-5">
+      <div className="col-md col-12-6 px-5 mb-5">
+        <div className="px-md-5 py-5">
           <div className="my-3">
-            <div className="display-4 fw-bold">Meet</div>
-            <div className="display-2 fw-bold">Radius</div>
+            <div className="display-4 fw-bold text-center text-md-start">Meet</div>
+            <div className="display-2 fw-bold text-center text-md-start">Radius</div>
           </div>
-          <div className="h5 fw-bold" style={{ lineHeight: "2rem" }}>
+          <div className="h5 fw-bold text-center text-md-start" style={{ lineHeight: "2rem" }}>
             Your squad&apos;s gaming
             <br /> companion, reimagined.
           </div>
@@ -96,7 +104,7 @@ export default function Home() {
           </div>
         ))}
         <div className="row align-items-center justify-content-center">
-          <div className="col-4">Available soon on</div>
+          <div className="col-4 small">Available soon on</div>
           <div className="col-4">
             <Image src={googlePlayImage} alt="Available on Google Play" style={{ width: "100%", height: "auto" }} />
           </div>
@@ -105,10 +113,10 @@ export default function Home() {
           </div>
         </div>
         <div className="row align-items-center justify-content-center mt-4">
-          <div className="col-8">
+          <div className="col-7 col-md-8 ps-0">
             <input type="text" className="w-100 rounded text-center h-100 p-1" placeholder="enter your email address" />
           </div>
-          <div className="col-4">
+          <div className="col-5 col-md-4 px-0">
             <button className="btn bg-black w-100 text-white text-small">Notify Me</button>
           </div>
         </div>
@@ -118,41 +126,41 @@ export default function Home() {
 
   const vidquestContent = [
     {
-      title: "Maximize your applicant pool&apos;s value",
-      description: "Why leave potential gains on the table? Give every candidate a chance and make the best of your reputation",
+      title: "Maximize your applicant pool’s value",
+      description: "Your large applicant pool is a moat. Don’t ignore a large fraction of it - Give every candidate a chance.",
       image: vidquestImage1
     },
     {
-      title: "Break away from 1:1 deals",
-      description: "1 minute of your people team&apos;s time : 1 minute of an interviewers time is not scaleable. Think efficient!",
+      title: "Redefine interview efficiency",
+      description: "You don’t have to match every minute from the candidate with a minute of yours. Get ready to scale.",
       image: vidquestImage2
     },
     {
       title: "AI-enhanced Questions",
-      description: "Get question ideas generated by AI from the candidate&apos;s resume like a gap or a career pivot or pen down your own",
+      description: "Get question ideas generated by AI from the candidate’s resume or pen down your own.",
       image: vidquestImage3
     },
     {
       title: "Time-stamps and Highlights",
-      description: "We have hid behind Reddit and Discord usernames for long enough. Bring out the real you, be bold.Get a transcript of the candidate&apos;s interview along with AI curated highlights with their timestamps.",
+      description: "Get a timestamped transcript of the candidate’s interview along with AI-curated highlights.",
       image: vidquestImage4
     },
     {
       title: "Stay reassured with product excellence",
-      description: "We take product seriously, the user experience is designed to",
+      description: "We ensure that the user experience is welcoming to candidates and take effort to eliminate undesirable dropoffs.",
       image: vidquestImage5
     },
   ]
 
   const vidquest = (
     <div className="row w-100 blue-gradient m-0 extra-rounded text-white">
-      <div className="col-12 col-md-6 px-5">
-        <div className="p-5">
+      <div className="col-12 col-md-6 px-5 mb-5 container-lg">
+        <div className="px-md-5 py-5">
           <div className="my-3">
-            <div className="display-4 fw-bold">Meet</div>
-            <div className="display-2 fw-bold">VidQuest</div>
+            <div className="display-4 fw-bold text-center text-md-start">Meet</div>
+            <div className="display-2 fw-bold text-center text-md-start">Vidquest</div>
           </div>
-          <div className="h5 fw-bold" style={{ lineHeight: "2rem" }}>
+          <div className="h5 fw-bold text-center text-md-start" style={{ lineHeight: "2rem" }}>
             Enhacing asynchronous
             <br /> interviews with AI
           </div>
@@ -161,12 +169,12 @@ export default function Home() {
           src={vidquestImage}
           alt="Radius App"
           className="mx-md-5"
-          style={{ width: "90%", height: "auto" }}
+          style={{ width: "100%", height: "auto" }}
         />
       </div>
       <div className="col-12 col-md-6 px-5">
         {vidquestContent.map(item => (
-          <div className="row w-100 extra-rounded my-5" key={item.title}>
+          <div className="row w-100 mx-0 my-5" key={item.title}>
             <div className="col-12 col-md-4 d-flex justify-content-center align-items-center pb-3 pb-md-0">
               <img src={item.image.src} alt={item.title} className="w-50 w-md-100" />
             </div>
@@ -182,8 +190,8 @@ export default function Home() {
       <div className="col-12 mb-5">
         <div className="h5 fw-bold text-center">Does this sound interesting? Come talk to us</div>
         <div className="d-flex justify-content-center mt-4">
-          <button className="btn bg-black text-white text-small me-4">Schedule a demo</button>
-          <button className="btn bg-black text-white text-small ms-4">Contact Us</button>
+          <button className="btn btn-dark bg-black text-small me-4">Schedule a demo</button>
+          <button className="btn btn-dark bg-black text-small ms-4">Contact Us</button>
         </div>
       </div>
     </div>
@@ -211,14 +219,15 @@ export default function Home() {
         <meta property="og:url" content="https://optigon.in" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Optigon Ventures" />
+        <meta name="theme-color" content="#000" media="(prefers-color-scheme: light)" />
       </Head>
       <Layout>
         <div className="container">
-          <div className="my-5 py-5">
-            <div className="display-5 text-center fw-bold">
+          <div className="mb-5">
+            <div className="display-5 text-center fw-bold mb-2">
               Hello <span style={{ fontFamily: "Emoji !important" }}>👋</span>
             </div>
-            <h1 className="display-1 fw-bold text-center my-4">
+            <h1 className="display-1 fw-bold text-center mb-3">
               We are
               <img
                 src={logo.src}
@@ -228,7 +237,7 @@ export default function Home() {
                 alt="Optigon Ventures"
               />
             </h1>
-            <div className="my-5">
+            <div className="mb-4">
               <p className="text-center mb-0 text-dark">
                 We are currently running some product experiments on the market.
               </p>
@@ -241,27 +250,29 @@ export default function Home() {
                 style={{ backgroundColor: "#6A6A6A" }}
                 className="d-flex rounded"
               >
-                <div
-                  className={`m-1 p-4 border border-dark rounded btn fw-bold ${
-                    tab === 0 ? "red-gradient text-white" : "bg-light"
-                  }`}
-                  onClick={() => setTab(0)}
-                >
-                  For Consumers
-                </div>
-                <div
-                  className={`m-1 p-4 border border-dark rounded ms-0 btn ${
-                    tab === 1 ? "blue-gradient text-white" : "bg-light"
-                  }`}
-                  onClick={() => setTab(1)}
-                >
-                  For Enterprises
-                </div>
+                <Link href="#consumers">
+                  <div
+                    className={`m-1 p-4 border border-dark rounded btn fw-bold ${
+                      tab === "consumers" ? "red-gradient text-white" : "bg-light"
+                    }`}
+                  >
+                    For Consumers
+                  </div>
+                </Link>
+                <Link href="#enterprises">
+                  <div
+                    className={`m-1 p-4 border border-dark rounded ms-0 btn ${
+                      tab === "enterprises" ? "blue-gradient text-white" : "bg-light"
+                    }`}
+                  >
+                    For Enterprises
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
         </div>
-        <div>{tab === 0 ? radius : vidquest}</div>
+        <div>{tab === "consumers" ? radius : vidquest}</div>
       </Layout>
     </>
   );

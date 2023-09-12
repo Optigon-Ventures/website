@@ -11,7 +11,7 @@ export default function Nav() {
     <nav>
       <div
         className="w-100 p-3 position-absolute d-block d-md-none"
-        style={{ color: isNavOpen ? "white" : " transparent", zIndex: 0 }}
+        style={{ color: isNavOpen ? "white" : "transparent", zIndex: 0 }}
       >
         <div
           className="bg-black rounded"
@@ -19,9 +19,9 @@ export default function Nav() {
         >
           <div style={{ paddingTop: navRef.current?.offsetHeight }}></div>
           <div className="px-4 pt-2 pb-4" style={{ display: isNavOpen ? "block" : "none" }}>
-            <div className="my-2">For Consumers</div>
-            <div className="my-2">For Enterprises</div>
-            <div className="btn btn-outline-light w-100 my-2">
+            <Link href="#consumers"><div className="my-2 text-white">For Consumers</div></Link>
+            <Link href="#enterprises"><div className="my-2 text-white">For Enterprises</div></Link>
+            <div className="btn btn-outline-light w-100 my-2 text-white">
               Talk to us
             </div>
           </div>
@@ -39,7 +39,7 @@ export default function Nav() {
                 width="auto"
                 height={30}
                 alt="Optigon Ventures"
-                className="navbar-brand" 
+                className="navbar-brand ms-2" 
                 style={{ position: "relative", zIndex: 2 }}
               />
             </Link>
@@ -55,7 +55,7 @@ export default function Nav() {
         </div>
       </div>
       <div className="navbar my-2 d-none d-md-flex container px-3 ps-4 navbar-expand-lg navbar-light justify-content-between align-items-center">
-        <Link className="navbar-brand" href="/">
+        <Link href="/">
           <img
             src={isNavOpen ? logoWhite.src : logo.src}
             width="auto"
@@ -64,9 +64,9 @@ export default function Nav() {
           />
         </Link>
         <div className="d-md-flex align-items-center d-none">
-          <div className="mx-3 fw-bold btn border-0">For Consumers</div>
-          <div className="mx-3 fw-bold btn border-0">For Enterprises</div>
-          <div className="button bg-dark text-white px-3 py-2 rounded ms-3 fw-bold btn ">
+          <Link href="#consumers"><div className="mx-3 fw-bold btn border-0">For Consumers</div></Link>
+          <Link href="#enterprises"><div className="mx-3 fw-bold btn border-0">For Enterprises</div></Link>
+          <div className="px-3 py-2 rounded ms-3 fw-bold btn btn-dark">
             Talk to us
           </div>
         </div>

@@ -12,6 +12,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -20,12 +24,13 @@ body {
 }
 
 a {
-  text-decoration: none;
-  color: #333;
+  text-decoration: none !important;
 }
 
 a:hover {
-  text-decoration: underline;
+  color: inherit !important;
+  text-decoration: underline !important;
+  text-decoration-color: #ebebeb !important;
 }
 
 .red-gradient {
