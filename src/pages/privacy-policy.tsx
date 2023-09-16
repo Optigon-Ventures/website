@@ -13,6 +13,8 @@ export default function PrivacyPolicyPage({ data } : any) {
   );
 }
 
+export const runtime = 'edge';
+
 export async function getServerSideProps() {
   const resp = await fetch(
     `${process.env.STRAPI_API_URI}/api/website?populate[privacyPolicy]=*`,
