@@ -17,6 +17,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/privacy-policy.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/privacy-policy.tsx", "src/pages/terms-and-conditions.tsx"],
   "exclude": ["node_modules"]
 }
