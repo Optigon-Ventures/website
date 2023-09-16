@@ -20,11 +20,14 @@ import appStoreImage from "@/assets/images/app_store.webp";
 import googlePlayImage from "@/assets/images/play_store.webp";
 import Layout from "@/components/Layout";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [tab, setTab] = useState<string>("consumers");
+  const [radiusNotificationEmail, setRadiusNotificationEmail] =
+    useState<string>("");
 
   const productContainerRef = useRef<HTMLDivElement>(null);
 
@@ -45,6 +48,39 @@ export default function Home() {
       }
     }
   });
+
+  const radiusMailingListSubscribe = () => {
+    const API_URI =
+      "https://script.google.com/macros/s/AKfycbxF4Agi8gizkjo1ZWiXzIkjs9cZVaLv9gB_Xnt58D7hw18LIzNf3Me1bZVqG0emqIgbXQ/exec";
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    if (
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
+        radiusNotificationEmail
+      )
+    ) {
+      fetch(API_URI, {
+        redirect: "follow",
+        method: "POST",
+        headers,
+        mode: "no-cors",
+        body: JSON.stringify({
+          emailAddress: radiusNotificationEmail,
+          deviceType: navigator.userAgent,
+        }),
+      })
+        .then((res) => {
+          alert(
+            "Thank you for subscribing to our mailing list. We will notify you when the app is available."
+          );
+          setRadiusNotificationEmail("");
+        })
+        .catch(() => {
+          alert("Something went wrong. Please try again later.");
+        });
+    }
+  };
 
   const radiusContent = [
     {
@@ -112,13 +148,23 @@ export default function Home() {
       <div className="col-12 col-md-6 p-5">
         {radiusContent.map((item) => (
           <div className="row w-100 extra-rounded my-5" key={item.title}>
-            <div className="col-12 col-md-4 d-flex justify-content-center align-items-center pb-3 pb-md-0">
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 1,
+                delay: 0,
+                ease: [0, 0.71, 0.2, 1.01],
+              }}
+              className="col-12 col-md-4 d-flex justify-content-center align-items-center pb-3 pb-md-0"
+            >
               <img
                 src={item.image.src}
                 alt={item.title}
                 className="w-50 w-md-100"
               />
-            </div>
+            </motion.div>
             <div className="col-12 col-md-8 d-flex justify-content-center align-items-center">
               <div className="text-center text-md-start">
                 <div className="fw-bold mb-2">{item.title}</div>
@@ -150,10 +196,15 @@ export default function Home() {
               type="text"
               className="w-100 rounded text-center h-100 p-1"
               placeholder="enter your email address"
+              onChange={(e) => setRadiusNotificationEmail(e.target.value)}
+              value={radiusNotificationEmail}
             />
           </div>
           <div className="col-5 col-md-4 px-0">
-            <button className="btn bg-black w-100 text-white text-small">
+            <button
+              className="btn bg-black w-100 text-white text-small"
+              onClick={radiusMailingListSubscribe}
+            >
               Notify Me
             </button>
           </div>
@@ -228,13 +279,23 @@ export default function Home() {
       <div className="col-12 col-md-6 px-5">
         {vidquestContent.map((item) => (
           <div className="row w-100 mx-0 my-5" key={item.title}>
-            <div className="col-12 col-md-4 d-flex justify-content-center align-items-center pb-3 pb-md-0">
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 1,
+                delay: 0,
+                ease: [0, 0.71, 0.2, 1.01],
+              }}
+              className="col-12 col-md-4 d-flex justify-content-center align-items-center pb-3 pb-md-0"
+            >
               <img
                 src={item.image.src}
                 alt={item.title}
                 className="w-50 w-md-100"
               />
-            </div>
+            </motion.div>
             <div className="col-12 col-md-8 d-flex justify-content-center align-items-center">
               <div className="text-center text-md-start">
                 <div className="fw-bold mb-2">{item.title}</div>
@@ -249,12 +310,16 @@ export default function Home() {
           Does this sound interesting? Come talk to us
         </div>
         <div className="d-flex justify-content-center mt-4">
-          <button className="btn btn-dark bg-black text-small me-4">
-            Schedule a demo
-          </button>
-          <button className="btn btn-dark bg-black text-small ms-4">
-            Contact Us
-          </button>
+          <Link href="https://calendly.com/optigon/vidquest-customerinterview?back=1" rel="noopener noreferrer" target="_blank">
+            <button className="btn btn-dark bg-black text-small me-4">
+              Schedule a demo
+            </button>
+          </Link>
+          <Link href="mailto:hello@optigon.in">
+            <button className="btn btn-dark bg-black text-small ms-4">
+              Contact Us
+            </button>
+          </Link>
         </div>
       </div>
     </div>
@@ -277,7 +342,7 @@ export default function Home() {
         />
         <meta
           property="og:image"
-          content="https://optigon.in/assets/logo.webp"
+          content="https://optigon.in/assets/og_banner.webp"
         />
         <meta property="og:url" content="https://optigon.in" />
         <meta property="og:type" content="website" />
@@ -290,8 +355,8 @@ export default function Home() {
       </Head>
       <Layout>
         <div className="container">
-          <div className="mb-5">
-            <div className="display-5 text-center fw-bold mb-2">
+          <div className="my-md-5 mb-5 py-3 py-md-5">
+            <div className="display-5 text-center fw-bold mb-2 d-none d-md-block">
               Hello <span style={{ fontFamily: "Emoji !important" }}>👋</span>
             </div>
             <h1 className="display-1 fw-bold text-center mb-3">

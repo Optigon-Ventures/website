@@ -28,9 +28,11 @@ export default function Nav() {
             <Link href="#enterprises">
               <div className="my-2 text-white">For Enterprises</div>
             </Link>
-            <div className="btn btn-outline-light w-100 my-2 text-white">
-              Talk to us
-            </div>
+            <Link href="https://calendly.com/optigon" target="_blank" rel="noopener noreferrer">
+              <div className="btn btn-outline-light w-100 my-2 text-white">
+                Talk to us
+              </div>
+            </Link>
           </div>
         </div>
       </div>
@@ -77,9 +79,11 @@ export default function Nav() {
           <Link href="#enterprises">
             <div className="mx-3 fw-bold btn border-0">For Enterprises</div>
           </Link>
-          <div className="px-3 py-2 rounded ms-3 fw-bold btn btn-dark">
-            Talk to us
-          </div>
+          <Link href="https://calendly.com/optigon" target="_blank" rel="noopener noreferrer">
+            <div className="px-3 py-2 rounded ms-3 fw-bold btn btn-dark">
+              Talk to us
+            </div>
+          </Link>
         </div>
       </div>
     </nav>
