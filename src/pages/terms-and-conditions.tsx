@@ -6,7 +6,7 @@ export default function TermsAndConditionsPage({ data }: any) {
       <div className="display-6 mt-5 mb-4 text-center fw-bold">Terms and Conditions</div>
       <div className="container">
         <ul>
-          {data.map((item: any) => <li>{item}</li>)}
+          {data.map((item: any) => <li key={item}>{item}</li>)}
         </ul>
       </div>
     </Layout>
