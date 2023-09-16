@@ -13,7 +13,7 @@ export default function PrivacyPolicyPage({ data } : any) {
   );
 }
 
-export const runtime = 'edge';
+export const runtime = 'experimental-edge';
 
 export async function getServerSideProps() {
   const resp = await fetch(

@@ -354,7 +354,7 @@ export default function Home({ radiusContent, vidquestContent }: any) {
   );
 }
 
-export const runtime = 'edge';
+export const runtime = 'experimental-edge';
 
 export async function getServerSideProps() {
   const resp = await fetch(
