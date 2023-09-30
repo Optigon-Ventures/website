@@ -3,26 +3,13 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import logo from "@/assets/images/logo.webp";
-import logoWhite from "@/assets/images/logo-white.webp";
 import radiusImage from "@/assets/images/radius-homepage.webp";
-import radiusImage1 from "@/assets/images/radius-1.webp";
-import radiusImage2 from "@/assets/images/radius-2.webp";
-import radiusImage3 from "@/assets/images/radius-3.webp";
-import radiusImage4 from "@/assets/images/radius-4.webp";
-import radiusImage5 from "@/assets/images/radius-5.webp";
 import vidquestImage from "@/assets/images/vidquest-homepage.webp";
-import vidquestImage1 from "@/assets/images/vidquest-1.webp";
-import vidquestImage2 from "@/assets/images/vidquest-2.webp";
-import vidquestImage3 from "@/assets/images/vidquest-3.webp";
-import vidquestImage4 from "@/assets/images/vidquest-4.webp";
-import vidquestImage5 from "@/assets/images/vidquest-5.webp";
 import appStoreImage from "@/assets/images/app_store.webp";
 import googlePlayImage from "@/assets/images/play_store.webp";
 import Layout from "@/components/Layout";
 import Link from "next/link";
 import { motion } from "framer-motion";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ radiusContent, vidquestContent }: any) {
   const [tab, setTab] = useState<string>("consumers");
@@ -47,7 +34,7 @@ export default function Home({ radiusContent, vidquestContent }: any) {
         });
       }
     }
-  });
+  }, []);
 
   const radiusMailingListSubscribe = () => {
     const API_URI =
