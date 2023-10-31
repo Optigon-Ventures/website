@@ -20,21 +20,26 @@ export default function Home({ radiusContent, vidquestContent }: any) {
 
   useEffect(() => {
     if (window) {
-      if (window.location.hash === "#enterprises") {
-        setTab("enterprises");
-        scrollTo({
-          top: productContainerRef.current?.offsetTop,
-          behavior: "smooth",
-        });
-      } else if (window.location.hash === "#consumers") {
-        setTab("consumers");
-        scrollTo({
-          top: productContainerRef.current?.offsetTop,
-          behavior: "smooth",
-        });
+      if (
+        productContainerRef.current &&
+        productContainerRef.current.offsetTop > window.pageYOffset
+      ) {
+        if (window.location.hash === "#enterprises") {
+          setTab("enterprises");
+          window.scrollTo({
+            top: productContainerRef.current.offsetTop,
+            behavior: "smooth",
+          });
+        } else if (window.location.hash === "#consumers") {
+          setTab("consumers");
+          window.scrollTo({
+            top: productContainerRef.current.offsetTop,
+            behavior: "smooth",
+          });
+        }
       }
     }
-  }, []);
+  });
 
   const radiusMailingListSubscribe = () => {
     const API_URI =
@@ -341,7 +346,7 @@ export default function Home({ radiusContent, vidquestContent }: any) {
   );
 }
 
-export const runtime = 'experimental-edge';
+// export const runtime = 'experimental-edge';
 
 export async function getServerSideProps() {
   const resp = await fetch(
