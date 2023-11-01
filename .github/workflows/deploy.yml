@@ -50,21 +50,27 @@ jobs:
           name: build-artifacts
           path: out
 
-      - name: Clone repo from optigon-website
-        run: |
-          git clone https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_TOKEN }}@github.com/Optigon-Ventures/optigon-website
+      - name: Clone repository
+        uses: actions/checkout@v2
+        with:
+          repository: <username>/<repository>
+          token: ${{ secrets.GIT_TOKEN }}
+          ref: deploy
 
       - name: Remove all files from deploy branch
         run: |
-          cd optigon-website
           git rm -r .
           git clean -fxd
           git commit -m "Remove all files"
 
       - name: Copy files to deploy branch
         run: |
-          cd ..
-          cp -r out/* optigon-website/
-          cd optigon-website
-          git add *
+          cp -r out/* .
+          git add .
           git commit -m "Deploy build artifacts"
+
+      - name: Push changes to deploy branch
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          branch: deploy
+          github_token: ${{ secrets.GIT_TOKEN }}
