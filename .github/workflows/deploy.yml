@@ -52,7 +52,7 @@ jobs:
 
       - name: Clone repo from optigon-website
         run: |
-          https://github.com/Optigon-Ventures/optigon-website
+          git clone https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_TOKEN }}@github.com/Optigon-Ventures/optigon-website
 
       - name: Remove all files from deploy branch
         run: |
