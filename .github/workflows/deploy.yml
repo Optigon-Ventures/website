@@ -22,7 +22,7 @@ jobs:
         run: yarn
 
       - name: Build Next.js app
-        run: yarn build && yarn export
+        run: yarn build
 
       - name: Save build artifacts
         uses: actions/upload-artifact@v2

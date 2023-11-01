@@ -348,7 +348,7 @@ export default function Home({ radiusContent, vidquestContent }: any) {
 
 // export const runtime = 'experimental-edge';
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const resp = await fetch(
     `${process.env.STRAPI_API_URI}/api/website?populate[radius][populate][0]=image&populate[vidquest][populate][1]=image`,
     { headers: { Authorization: `Bearer ${process.env.STRAPI_API_KEY}` } }

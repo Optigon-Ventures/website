@@ -15,6 +15,10 @@ const withMDX = require('@next/mdx')({
 const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   reactStrictMode: true,
+  images: {
+    unoptimized: true,
+  },
+  output: "export"
 }
 
 module.exports = withMDX(nextConfig)
