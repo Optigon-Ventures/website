@@ -21,6 +21,12 @@ jobs:
       - name: Install dependencies
         run: yarn
 
+      - name: Set environment variables
+        run: |
+          touch .env
+          echo "STRAPI_API_URI=${{ secrets.STRAPI_API_URI }}" >> .env
+          echo "STRAPI_API_KEY=${{ secrets.STRAPI_API_KEY }}" >> .env
+
       - name: Build Next.js app
         run: yarn build
 
