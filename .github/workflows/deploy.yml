@@ -25,11 +25,26 @@ jobs:
       - name: Build app
         run: yarn build
 
+      - name: Save build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-artifacts
+          path: out
+
       - name: Checkout deploy branch
         uses: actions/checkout@v2
         with:
           ref: deploy
           fetch-depth: 0
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: build-artifacts
+          path: out
+
+      - name: Check Directories
+        run: ls -la
 
       - name: Copy files to deploy branch
         run: cp -R out/* .
