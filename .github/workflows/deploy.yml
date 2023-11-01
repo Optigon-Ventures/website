@@ -49,10 +49,8 @@ jobs:
       - name: Copy files to deploy branch
         run: cp -R out/* .
 
-      - name: Commit and push changes
-        run: |
-          git config --global user.email "noufal@optigon.in"
-          git config --global user.name "iamnoufal"
-          git add .
-          git commit -m "Deploy app"
-          git push
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GIT_TOKEN }}
+          branch: deploy
