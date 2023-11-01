@@ -41,21 +41,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: build-artifacts
-          path: out
-
       - name: Clone repository
         uses: actions/checkout@v2
         with:
           repository: Optigon-Ventures/optigon-website
           token: ${{ secrets.GIT_TOKEN }}
           ref: deploy
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: build-artifacts
+          path: out
 
       - name: Remove all files from deploy branch
         run: |
