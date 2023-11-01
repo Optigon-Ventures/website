@@ -1,4 +1,4 @@
-name: Deploy
+name: Build and Deploy
 
 on:
   push:
@@ -6,68 +6,32 @@ on:
       - master
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16.x'
-
       - name: Install dependencies
         run: yarn
 
-      - name: Set environment variables
-        run: |
-          touch .env
-          echo "STRAPI_API_URI=${{ secrets.STRAPI_API_URI }}" >> .env
-          echo "STRAPI_API_KEY=${{ secrets.STRAPI_API_KEY }}" >> .env
-
-      - name: Build Next.js app
+      - name: Build app
         run: yarn build
 
-      - name: Save build artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: build-artifacts
-          path: out
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Clone repository
+      - name: Checkout deploy branch
         uses: actions/checkout@v2
         with:
-          repository: Optigon-Ventures/optigon-website
-          token: ${{ secrets.GIT_TOKEN }}
           ref: deploy
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: build-artifacts
-          path: out
-
-      - name: Remove all files from deploy branch
-        run: |
-          git rm -r .
-          git clean -fxd
-          git commit -m "Remove all files"
+          fetch-depth: 0
 
       - name: Copy files to deploy branch
-        run: |
-          cp -r out/* .
-          git add .
-          git commit -m "Deploy build artifacts"
+        run: cp -R out/* .
 
-      - name: Push changes to deploy branch
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          branch: deploy
-          github_token: ${{ secrets.GIT_TOKEN }}
+      - name: Commit and push changes
+        run: |
+          git config --global user.email "noufal@optigon.in"
+          git config --global user.name "iamnoufal"
+          git add .
+          git commit -m "Deploy app"
+          git push
