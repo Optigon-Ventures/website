@@ -53,7 +53,7 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v2
         with:
-          repository: <username>/<repository>
+          repository: Optigon-Ventures/optigon-website
           token: ${{ secrets.GIT_TOKEN }}
           ref: deploy
 
