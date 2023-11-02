@@ -51,8 +51,8 @@ jobs:
 
       - name: Set GitHub config
         run: |
-          git config --global user.name 'iamnoufal'
-          git config --global user.email 'noufal@optigon.in
+          git config --local user.name iamnoufal
+          git config --local user.email noufal@optigon.in
           git add .
           git commit -m "Deploy Build ${{ github.sha }}"
 
