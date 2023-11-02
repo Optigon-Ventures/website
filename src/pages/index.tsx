@@ -256,97 +256,67 @@ export default function Home({ radiusContent, vidquestContent }: any) {
   );
 
   return (
-    <>
-      <Head>
-        <title>Optigon Ventures</title>
-        <meta
-          name="description"
-          content="We are currently running some product experiments on the market."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-        <meta property="og:title" content="Optigon Ventures" />
-        <meta
-          property="og:description"
-          content="We are currently running some product experiments on the market."
-        />
-        <meta
-          property="og:image"
-          content="https://optigon.in/assets/og_banner.webp"
-        />
-        <meta property="og:url" content="https://optigon.in" />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Optigon Ventures" />
-        <meta
-          name="theme-color"
-          content="#000"
-          media="(prefers-color-scheme: light)"
-        />
-      </Head>
-      <Layout>
-        <div className="container">
-          <div className="my-md-5 mb-5 py-3 py-md-5">
-            <div className="display-5 text-center fw-bold mb-2 d-none d-md-block">
-              Hello <span style={{ fontFamily: "Emoji !important" }}>👋</span>
-            </div>
-            <h1 className="display-1 fw-bold text-center mb-3">
-              We are
-              <img
-                src={logo.src}
-                className="ms-md-4 mt-3 mt-md-0"
-                height={60}
-                width="auto"
-                alt="Optigon Ventures"
-              />
-            </h1>
-            <div className="mb-4">
-              <p className="text-center mb-0 text-dark">
-                We are currently running some product experiments on the market.
-              </p>
-              <p className="text-center mb-0 text-dark">
-                Which one piques your interest?
-              </p>
-            </div>
-            <div className="d-flex justify-content-center">
-              <div
-                style={{ backgroundColor: "#6A6A6A" }}
-                className="d-flex rounded"
-              >
-                <Link href="#consumers">
-                  <div
-                    className={`m-1 p-4 border border-dark rounded btn fw-bold ${
-                      tab === "consumers"
-                        ? "red-gradient text-white"
-                        : "bg-light"
-                    }`}
-                  >
-                    For Consumers
-                  </div>
-                </Link>
-                <Link href="#enterprises">
-                  <div
-                    className={`m-1 p-4 border border-dark rounded ms-0 btn ${
-                      tab === "enterprises"
-                        ? "blue-gradient text-white"
-                        : "bg-light"
-                    }`}
-                  >
-                    For Enterprises
-                  </div>
-                </Link>
-              </div>
+    <Layout title="Optigon Ventures">
+      <div className="container">
+        <div className="my-md-5 mb-5 py-3 py-md-5">
+          <div className="display-5 text-center fw-bold mb-2 d-none d-md-block">
+            Hello <span style={{ fontFamily: "Emoji !important" }}>👋</span>
+          </div>
+          <h1 className="display-1 fw-bold text-center mb-3">
+            We are
+            <img
+              src={logo.src}
+              className="ms-md-4 mt-3 mt-md-0"
+              height={60}
+              width="auto"
+              alt="Optigon Ventures"
+            />
+          </h1>
+          <div className="mb-4">
+            <p className="text-center mb-0 text-dark">
+              We are currently running some product experiments on the market.
+            </p>
+            <p className="text-center mb-0 text-dark">
+              Which one piques your interest?
+            </p>
+          </div>
+          <div className="d-flex justify-content-center">
+            <div
+              style={{ backgroundColor: "#6A6A6A" }}
+              className="d-flex rounded"
+            >
+              <Link href="#consumers">
+                <div
+                  className={`m-1 p-4 border border-dark rounded btn fw-bold ${
+                    tab === "consumers"
+                      ? "red-gradient text-white"
+                      : "bg-light"
+                  }`}
+                >
+                  For Consumers
+                </div>
+              </Link>
+              <Link href="#enterprises">
+                <div
+                  className={`m-1 p-4 border border-dark rounded ms-0 btn ${
+                    tab === "enterprises"
+                      ? "blue-gradient text-white"
+                      : "bg-light"
+                  }`}
+                >
+                  For Enterprises
+                </div>
+              </Link>
             </div>
           </div>
         </div>
-        <div ref={productContainerRef}>
-          {tab === "consumers" ? radius : vidquest}
-        </div>
-      </Layout>
-    </>
+      </div>
+      <div ref={productContainerRef}>
+        {tab === "consumers" ? radius : vidquest}
+      </div>
+    </Layout>
   );
 }
-
-// export const runtime = 'experimental-edge';
 
 export async function getStaticProps() {
   const resp = await fetch(
