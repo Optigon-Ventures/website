@@ -49,6 +49,13 @@ jobs:
       - name: Copy files to deploy branch
         run: cp -R out/* .
 
+      - name: Set GitHub config
+        run: |
+          git config --global user.name 'iamnoufal'
+          git config --global user.email 'noufal@optigon.in
+          git add .
+          git commit -m "Deploy Build ${{ github.sha }}"
+
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
