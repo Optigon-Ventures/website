@@ -330,7 +330,7 @@ export async function getStaticProps() {
         new Object({
           title: i.title,
           description: i.description,
-          image: process.env.STRAPI_API_URI + i.image.data.attributes.url,
+          image: i.image.data.attributes.url,
         })
     ),
     vidquestContent: respData.data.attributes.vidquest.map(
@@ -338,7 +338,7 @@ export async function getStaticProps() {
         new Object({
           title: i.title,
           description: i.description,
-          image: process.env.STRAPI_API_URI + i.image.data.attributes.url,
+          image: i.image.data.attributes.url,
         })
     ),
   };
